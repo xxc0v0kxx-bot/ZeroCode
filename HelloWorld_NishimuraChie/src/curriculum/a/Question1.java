@@ -2,36 +2,38 @@ package curriculum.a;
 
 public class Question1 {
 
+	private static final String String = null;
+
 	public static void main(String[] args) {
 		
 		// Q1各型の変数を宣言し、初期値を設定
 		
 			// 変数byteNumの初期値を設定
-			byte byteNum = 1;
+			byte byteNum;
 			
 			// 変数shortNumの初期値を設定
-			short shortNum = 1;
+			short shortNum;
 			
 			// 変数intNumの初期値を設定
-			int intNum = 1;
+			int intNum;
 			
 			// 変数longNumの初期値を設定
-			long longNum = 1;
+			long longNum;
 			
 			// 変数floatNumの初期値を設定
-			float floatNum = 1;
+			float floatNum;
 			
 			// 変数doubleNumの初期値を設定
-			double doubleNum = 1;
+			double doubleNum;
 			
 			// 変数letterの初期値を設定
-			char letter = 'A';
+			char letter;
 			
 			// 変数lettersの初期値を設定
-			String letters = "ABC";
+			String letters;
 			
 			// 変数isBooleanの初期値を設定
-			boolean isBoolean = false;
+			boolean isBoolean;
 		
 		//Q2 1で宣言した各型の変数に指定された値を代入
 			
@@ -181,21 +183,20 @@ public class Question1 {
 			System.out.println(s);
 			
 			
-		// Q13 
+		// Q13
 			// "私はJavaが好きです。Javaは楽しい！"の"Java"を""Python"に置き換える
-			String lang = "Java";
-			
-			// "Pyson"を再代入
-			lang="Pyson";
+			String lang = "私はJavaが好きです。Javaは楽しい！";
+			String Lang2 = lang.replace( "Java","Pyson");
 			
 			// 置き換えて表示
-			String text = "私は" + lang + "が好きです。" + lang + "は楽しい！";
-				System.out.println(text);
+			System.out.println(Lang2);
 			
 			
-			} 
+			
+
+	}}		
 						
-		}
+		
 
 
 
