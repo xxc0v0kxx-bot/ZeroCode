@@ -13,7 +13,7 @@ public class Question2 {
 			int score = 75;
 		
 			// scoreが60以上なら"合格です！"と表示
-			if(score > 60){
+			if(score >= 60){
 			System.out.println("合格です！");
 			}
 		
