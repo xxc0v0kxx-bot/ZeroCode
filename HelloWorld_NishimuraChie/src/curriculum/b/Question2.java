@@ -4,8 +4,6 @@ import java.util.Scanner;
 
 public class Question2 {
 
-	private static final char[] max = null;
-
 	public static void main(String[] args) {
 
 		// Q1
@@ -17,6 +15,7 @@ public class Question2 {
 			System.out.println("合格です！");
 			}
 		
+			
 		// Q2
 			// int型の変数ageに25を代入
 			int age = 25;
@@ -93,6 +92,7 @@ public class Question2 {
 				System.out.println("負の数です");
 				}
 			
+			
 		// Q6
 			// int型のvalueを用意、いずれかの値をコンソール入力で代入
 			System.out.print("数字を入力してください：");
@@ -133,6 +133,7 @@ public class Question2 {
 			else if(score < 50) {
 				System.out.println("不可");
 				}
+			
 			
 		// Q8 
 			/* コンソール入力がnullまたは空文字（""）のときに
@@ -199,7 +200,7 @@ public class Question2 {
 				default:
 				System.out.println("無効な月です");
 				}
-		
+			sc.close();
 	}}
 			
 			
