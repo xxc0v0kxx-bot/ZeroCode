@@ -88,7 +88,7 @@ public class Question2 {
 				}
 			
 			// numの値が0より小さければ"負の数です"と表示
-			else if(num < 0) {
+			else{
 				System.out.println("負の数です");
 				}
 			
@@ -104,7 +104,7 @@ public class Question2 {
 				}
 			
 			// 奇数なら"奇数です"と表示
-			else if(value % 2 == 1) {
+			else{
 				System.out.println("奇数です");
 				}
 			
@@ -130,7 +130,7 @@ public class Question2 {
 				}
 			
 			// 50未満なら"不可"
-			else if(score < 50) {
+			else  {
 				System.out.println("不可");
 				}
 			
