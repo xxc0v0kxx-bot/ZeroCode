@@ -152,7 +152,6 @@ public class Question3 {
 
 			//複数商品が入力された場合に1つずつ処理する準備
 			String[] inputs = input.split("、");
-			String[] products = {"パソコン","冷蔵庫","扇風機","洗濯機","加湿器","テレビ","ディスプレイ"};
 
 			for (String product : inputs) {
 				// 0～11までの乱数を発生	
