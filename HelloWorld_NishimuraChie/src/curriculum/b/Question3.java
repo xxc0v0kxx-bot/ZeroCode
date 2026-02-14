@@ -109,7 +109,11 @@ public class Question3 {
 
 				// 横並びにしたいときはprint()を使う
 				if (i < 10) {
-					System.out.print("0" + i); // 1桁には"0"をつける
+					System.out.printf("%02d",i); 
+					/*1桁には"0"をつける *「%02d」も0埋めになる、
+					その場合プリントｆにする(書式を指定して表示できる）
+				(printfは改行できないから「%n」を追加して改行させることもある)
+														*/
 				}
 				System.out.print(" * ");
 				if (j < 10) {
