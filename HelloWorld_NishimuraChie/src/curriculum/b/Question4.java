@@ -88,22 +88,25 @@ public class Question4 {
 		 *		コンソール入力の値が含まれるかどうか表示する*/
 		Scanner sc = new Scanner(System.in);
 		int[] num4 = { 4, 7, 10, 15, 20 };
+		boolean found = false;
 
 		// コンソールで数字を入力する
 		System.out.println("数字を入力してください");
 		int input = sc.nextInt();
 
 		// 入力された数字が配列内にあるか無いかを確認する
-		for (int i = 0; i < num4.length;) {
-
+		for (int i = 0; i < num4.length; i++) {
 			if (num4[i] == input) {
-				System.out.println("結果：（"+input + "は配列に含まれています)");
-				break;
-			} else {
-				System.out.println("結果：（"+input + "は配列に含まれていません)");
-				break;
+				found  = true;
+		        break;
 			}
 		}
+			if (found) {	
+				System.out.println("結果：（"+input + "は配列に含まれています)");
+			} else {
+				System.out.println("結果：（"+input + "は配列に含まれていません)");
+			}
+		
 		
 		
 		// Q7 2次元配列{{1, 2}, {3, 4}, {5, 6}};を用意する
