@@ -32,7 +32,5 @@ public class Animal {
 		return speed;
 	}
 
-	public static void main(String[] args) {
-	}
 
 }

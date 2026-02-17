@@ -17,22 +17,22 @@ public class Question5 {
 	}
 
 	// Q3　引数：整数 (int num)　	戻り値：true（偶数なら）、false（奇数なら）
-	Boolean a = isEven();
+
 
 	public static boolean isEven(int a) {
 		if (a % 2 == 0) {
 			System.out.println(a + "は偶数です。");
 			return true;
 
-		} else {
+		}
+		else {
 			System.out.println(a + "は奇数です。");
 			return false;
 		}
+		
 	}
 
-	private Boolean isEven() {
-		return null;
-	}
+	
 
 	public static void main(String[] args) {
 
