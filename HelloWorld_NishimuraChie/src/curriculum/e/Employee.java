@@ -2,8 +2,7 @@ package curriculum.e;
 
 public class Employee {
 
-	String name;
-
+	// work()メソッド
 	public void work(String name) {
 		System.out.println(name + "は働いています。");
 	}
