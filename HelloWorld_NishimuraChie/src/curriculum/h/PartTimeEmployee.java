@@ -8,6 +8,7 @@ public class PartTimeEmployee extends Employee {
 		super(id, name);
 	}
 
+	// @OverrideでcalculateDailyWage()メソッドの中身を設定
 	@Override
 	public int calculateDailyWage(int hoursWorked) {
 		return HOURLY_RATE * hoursWorked;

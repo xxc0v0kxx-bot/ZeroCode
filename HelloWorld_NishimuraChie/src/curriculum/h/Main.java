@@ -4,9 +4,11 @@ public class Main {
 
 	public static void main(String[] args) {
 
+		// 各クラスをもとにインスタンス（実装）を作成する
 		FullTimeEmployee full = new FullTimeEmployee(null, null);
 		PartTimeEmployee part = new PartTimeEmployee(null, null);
 
+		// 社員・パートの給料を出力する
 		System.out.println(
 				"正社員の給与:" + full.calculateDailyWage(9) + "円");
 		System.out.println(
