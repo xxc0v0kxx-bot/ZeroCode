@@ -5,8 +5,8 @@ public class Main {
 	public static void main(String[] args) {
 
 		// 各クラスをもとにインスタンス（実装）を作成する
-		FullTimeEmployee full = new FullTimeEmployee(null, null);
-		PartTimeEmployee part = new PartTimeEmployee(null, null);
+		FullTimeEmployee full = new FullTimeEmployee("E001", "佐藤太郎");
+		PartTimeEmployee part = new PartTimeEmployee("E002", "田中花子");
 
 		// 社員・パートの給料を出力する
 		System.out.println(
