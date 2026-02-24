@@ -1,8 +1,8 @@
 package curriculum.i;
 
 abstract class Employee {
-	protected String id;
-	protected String name;
+	private String id;
+	private String name;
 
 	public Employee(String id, String name) {
 		this.id = id;

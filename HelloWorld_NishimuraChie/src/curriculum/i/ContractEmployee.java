@@ -5,9 +5,9 @@ class ContractEmployee extends Employee {
 		super(id, name);
 	}
 
+	static final int hourlyRate = 1000;
 	@Override
 	public int calculateDailyWage(int hoursWorked) {
-		int hourlyRate = 1000;
 		return hoursWorked * hourlyRate;
 	}
 }
