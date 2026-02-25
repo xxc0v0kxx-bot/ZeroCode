@@ -19,5 +19,6 @@ abstract class Employee {
 	}
 
 	abstract public int calculateDailyWage(int hoursWorked);
+		
 
 }

@@ -6,6 +6,7 @@ class FullTimeEmployee extends Employee {
 	}
 
 	static final int hourlyRate = 1250;
+	
 	@Override
 	public int calculateDailyWage(int hoursWorked) {
 		int overtime = Math.max(0, hoursWorked - 8);
