@@ -20,7 +20,6 @@ abstract public class Employee implements Billable{
 		this.name = name;
 	}
 	
-	public abstract int costForDay(int hoursWorked);{
+	public abstract int costForDay(int hoursWorked);
 	
-	
-}}
+}
