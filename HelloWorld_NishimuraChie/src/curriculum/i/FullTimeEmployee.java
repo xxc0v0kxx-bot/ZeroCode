@@ -5,12 +5,12 @@ class FullTimeEmployee extends Employee {
 		super(id, name);
 	}
 
-	static final int hourly_Rate = 1250;
+	static final int HOURLY_RATE = 1250;
 	
 	@Override
 	public int calculateDailyWage(int hoursWorked) {
 		int overtime = Math.max(0, hoursWorked - 8);
 		int regularHours = hoursWorked - overtime;
-		return (regularHours * hourly_Rate) + (int) (overtime * hourly_Rate * 1.25);
+		return (regularHours * HOURLY_RATE) + (int) (overtime * HOURLY_RATE * 1.25);
 	}
 }
