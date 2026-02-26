@@ -5,12 +5,12 @@ public class Contract extends Employee{
 		super(name, hours);
 	}
 
-	static final int hourlyRate = 1000;
+	static final int HOURLY_RATE = 1000;
 
 	@Override
 	// calculateSalary()で自分自身を計算する　引数なしのメソッドにする
 	public int calculateSalary() {
-		return (getHours() * hourlyRate);
+		return (getHours() * HOURLY_RATE);
 	}
 	
 
