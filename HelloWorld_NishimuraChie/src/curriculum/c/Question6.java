@@ -14,11 +14,19 @@ public class Question6 {
 
 		System.out.println("じゃんけんゲームを始めます。");
 		System.out.println("数字で グー(0), チョキ(1), パー(2) を入力してください");
+		
 
 		String winOrLose = null;
 		String[] hands = { "グー", "チョキ", "パー" };
 		// じゃんけん勝つまでループさせる
 		while (true) {
+			
+			 if (!scanner.hasNextInt()) {
+			        System.out.println("0～2の数字を入力してください");
+			        // 文字列や少数などの入力がエラーにならないようにする
+			        scanner.next();  
+			        continue;
+			    }
 			// 数字を入力
 			int userHand = scanner.nextInt();
 
