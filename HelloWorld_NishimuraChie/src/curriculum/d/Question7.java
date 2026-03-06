@@ -78,7 +78,6 @@ public class Question7 {
 			    log.append(attackMsg).append(System.lineSeparator());
 			    log.append(System.lineSeparator()); 
 				
-			    attacker.attack(defender);
 			    int damage = attacker.attack(defender);
 			    String damagekMsg = defender.getName() + " に" + damage + "のダメージ！";
 			    System.out.println(damagekMsg);

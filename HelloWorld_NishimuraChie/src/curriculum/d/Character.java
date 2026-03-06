@@ -39,8 +39,11 @@ public abstract class Character {
 		return hp;
 	}
 
+	/* 0 <= hp <= maxHp：0～maxHpの間の値になるようにする
+	* (Math.maxで0より大きいほう、Math.minで値が小さいほうを返す)
+	*/
 	public void setHp(int hp) {
-		this.hp = hp;
+		this.hp = Math.max(0, Math.min(hp, this.maxHp));
 	}
 
 	public int getAt() {
@@ -68,8 +71,8 @@ public abstract class Character {
 	// 攻撃したときのhpの処理内容を決める
 	public int attack(Character enemy) {
 
-		int damage = this.at;
-		int newHp = enemy.getHp() - damage;
+		int beforeHp = enemy.getHp(); // 攻撃前HP
+		int newHp = beforeHp - this.at;
 
 		// hpが0以下になったときは0の表示にする
 		if (newHp < 0) {
@@ -77,6 +80,7 @@ public abstract class Character {
 		}
 		enemy.setHp(newHp);
 
+		int damage = beforeHp - newHp; // 実際のダメージ
 		return damage;
 	}
 
@@ -86,4 +90,3 @@ public abstract class Character {
 	}
 
 }
-	
