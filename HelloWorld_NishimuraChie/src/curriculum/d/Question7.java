@@ -12,120 +12,126 @@ public class Question7 {
 	public static void main(String[] args) {
 
 		StringBuilder log = new StringBuilder();
-			Scanner scanner = new Scanner(System.in);
-			// プレイヤー名を入力
-			System.out.print("プレイヤー名: ");
-			String name = scanner.nextLine();
+		final Random RAND = new Random();
+		Scanner scanner = new Scanner(System.in);
+		// プレイヤー名を入力
+		System.out.print("プレイヤー名: ");
+		String name = scanner.nextLine();
 
-			// プレイヤーのステータスを表示
-			Player player = Player.createPlayer(name);
-			System.out.println(player.showStatus());
-			System.out.println();
-			log.append(player.showStatus()).append(System.lineSeparator());
-			log.append(System.lineSeparator());
+		// プレイヤーのステータスを表示
+		Player player = Player.createPlayer(name);
+		System.out.println(player.showStatus());
+		System.out.println();
+		log.append(player.showStatus()).append(System.lineSeparator());
+		log.append(System.lineSeparator());
 
-			Daemon daemon = null;
-			try {
-				daemon = Daemon.loadDaemon("daemon_status.txt");
-			} catch (FileNotFoundException e) {
-				e.printStackTrace();
-			}
-			if (daemon == null) {
-				System.out.println("Daemonの読み込みに失敗しました。");
-				scanner.close();
-				return;
-			}
-
-			System.out.println(daemon.showStatus());
-			System.out.println();
-			log.append(daemon.showStatus()).append(System.lineSeparator());
-			log.append(System.lineSeparator());
-
-			System.out.println("=== 戦闘開始！ ===");
-			System.out.println();
-			log.append("=== 戦闘開始！ ===").append(System.lineSeparator());
-			log.append(System.lineSeparator());
-
-			// 先制を決める
-
-			Random rand = new Random();
-			Character attacker;
-			Character defender;
-
-			if (player.getSp() > daemon.getSp()) {
-				attacker = player;
-				defender = daemon;
-			} else if (player.getSp() < daemon.getSp()) {
-				attacker = daemon;
-				defender = player;
-			} else if (rand.nextBoolean()) {
-				// trueならplayer先行
-				attacker = player;
-				defender = daemon;
-			} else {
-				// falseならdaemon先行
-				attacker = daemon;
-				defender = player;
-
-			}
-
-			// どちらもHP残量がある場合は繰り返す
-			while (!attacker.isDefeated() && !defender.isDefeated()) {
-				String attackMsg = attacker.getName() + " の攻撃！";
-				System.out.println(attackMsg);
-				System.out.println();
-				// logに書き出し
-			    log.append(attackMsg).append(System.lineSeparator());
-			    log.append(System.lineSeparator()); 
-				
-			    int damage = attacker.attack(defender);
-			    String damagekMsg = defender.getName() + " に" + damage + "のダメージ！";
-			    System.out.println(damagekMsg);
-			 // logに書き出し
-			    log.append(damagekMsg).append(System.lineSeparator());
-				
-				String attackResult = defender.getName() +
-						" の残りHP: " + defender.getHp() + "/" + defender.getMaxHp();
-				System.out.println(attackResult);
-				System.out.println();
-				// logに書き出し
-				log.append(attackResult).append(System.lineSeparator());
-				log.append(System.lineSeparator());
-				
-				// 役割交代
-				Character temporary = attacker;
-				attacker = defender;
-				defender = temporary;
-			}
-
-			// どちらかのHPが0になったら終了
-			if (player.hp <= 0 || daemon.hp <= 0) {
-				System.out.println("=== 戦闘終了！ ===");
-				System.out.println();
-				log.append("=== 戦闘終了！ ===").append(System.lineSeparator());
-				log.append(System.lineSeparator());
-			}
-			// HPの残量が多いほうが勝者
-			if (player.hp < daemon.hp) {
-				System.out.println("勝者: " + daemon.name);
-				System.out.println();
-				log.append("勝者: " + daemon.name).append(System.lineSeparator());
-				log.append(System.lineSeparator());
-			} else {
-				System.out.println("勝者: " + player.name);
-				System.out.println();
-				log.append("勝者: " + player.name).append(System.lineSeparator());
-				log.append(System.lineSeparator());
-			}
-			System.out.println("battle_log.txt へ書き込みしました");
+		Daemon daemon = null;
+		try {
+			daemon = Daemon.loadDaemon("daemon_status.txt");
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		if (daemon == null) {
+			System.out.println("Daemonの読み込みに失敗しました。");
 			scanner.close();
+			return;
+		}
 
-		
+		System.out.println(daemon.showStatus());
+		System.out.println();
+		log.append(daemon.showStatus()).append(System.lineSeparator());
+		log.append(System.lineSeparator());
+
+		System.out.println("=== 戦闘開始！ ===");
+		System.out.println();
+		log.append("=== 戦闘開始！ ===").append(System.lineSeparator());
+		log.append(System.lineSeparator());
+
+		// 先制を決める
+
+		Character attacker;
+		Character defender;
+
+		if (player.getSp() > daemon.getSp()) {
+			attacker = player;
+			defender = daemon;
+		} else if (player.getSp() < daemon.getSp()) {
+			attacker = daemon;
+			defender = player;
+		} else if (RAND.nextBoolean()) {
+			// trueならplayer先行
+			attacker = player;
+			defender = daemon;
+		} else {
+			// falseならdaemon先行
+			attacker = daemon;
+			defender = player;
+		}
+
+		// どちらもHP残量がある場合は繰り返す(どちらかが０になったら終了）
+		while (!attacker.isDefeated() && !defender.isDefeated()) {
+			String attackMsg = attacker.getName() + " の攻撃！";
+			System.out.println(attackMsg);
+			System.out.println();
+			// logに書き出し
+			log.append(attackMsg).append(System.lineSeparator());
+			log.append(System.lineSeparator());
+
+			int damage = attacker.attack(defender);
+			String damageMsg = defender.getName() + " に" + damage + "のダメージ！";
+			System.out.println(damageMsg);
+			// logに書き出し
+			log.append(damageMsg).append(System.lineSeparator());
+
+			String attackResult = defender.getName() +
+					" の残りHP: " + defender.getHp() + "/" + defender.getMaxHp();
+			System.out.println(attackResult);
+			System.out.println();
+			// logに書き出し
+			log.append(attackResult).append(System.lineSeparator());
+			log.append(System.lineSeparator());
+
+			// 役割交代
+			Character temporary = attacker;
+			attacker = defender;
+			defender = temporary;
+		}
+
+		System.out.println("=== 戦闘終了！ ===");
+		System.out.println();
+		log.append("=== 戦闘終了！ ===").append(System.lineSeparator());
+		log.append(System.lineSeparator());
+
+		// 勝敗判定　(この書き方のほうが実務的）
+		String winner;
+		if (player.isDefeated()) {
+		    winner = daemon.getName();
+		}
+		else {
+		    winner = player.getName();
+		}
+		/* HPの残量が多いほうが勝者
+		 * if (player.getHp() < daemon.getHp()) {
+		 */
+			System.out.println("勝者: " + winner);
+			System.out.println();
+			log.append("勝者: " + winner).append(System.lineSeparator());
+			log.append(System.lineSeparator());
+		/*} else {
+			System.out.println("勝者: " + player.getName());
+			System.out.println();
+			log.append("勝者: " + player.getName()).append(System.lineSeparator());
+			log.append(System.lineSeparator());
+		}
+		*/
+		System.out.println("battle_log.txt へ書き込みしました");
+		scanner.close();
+
 		// logの書き出し時に例外処理が起きた場合の処理
 		try (BufferedWriter bw = new BufferedWriter(new FileWriter("battle_log.txt"))) {
-		    bw.write(log.toString());
+			bw.write(log.toString());
 		} catch (IOException e) {
-		    e.printStackTrace();
+			e.printStackTrace();
 		}
 	}
 }

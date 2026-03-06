@@ -11,7 +11,9 @@ public class Player extends Character {
 	}
 
 	public static Player createPlayer(String name) {
-		// HPをランダム値で設定し、定数にする
+		/* HPをランダム値で設定し、定数にする
+		*（プレイヤーを作るたびにランダム値を設定する）
+		*/
 		final int maxHp = rand.nextInt(41) + 60; // 60～100の範囲
 		int hp = maxHp;
 		int at = rand.nextInt(10) + 10; // 10～19の範囲
